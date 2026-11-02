@@ -22,7 +22,19 @@
 - आने वाली MIDI क्लॉक सिर्फ़ आर्पेजियो की गति तय करती है, कभी नोट नहीं बजाती; ताल पर एक ही नोट दोहराने से कॉर्ड दोबारा ट्रिगर नहीं होता
 - बाहर निकलते समय सब कुछ सेव होता है और लोड करने पर वैसा ही लौट आता है
 
-[Chordex FM](https://github.com/buenosairesfront/chordexfm) के साथ Chordex परिवार का हिस्सा।
+<!-- u-ma:family -->
+## Chordex परिवार
+
+कंट्रोल वही, इंजन अलग। बाकी भी आज़माएँ:
+
+| | |
+|---|---|
+| <a href="https://github.com/buenosairesfront/chordexfm/blob/main/README.hi.md"><img src="https://raw.githubusercontent.com/buenosairesfront/chordexfm/main/docs/3_metal.png" width="200" alt="Chordex FM"></a> | **[Chordex FM](https://github.com/buenosairesfront/chordexfm/blob/main/README.hi.md)**<br>4-ऑपरेटर FM, फूल के रूप में<br>`;install https://github.com/buenosairesfront/chordexfm` |
+| <a href="https://github.com/buenosairesfront/chordexstg/blob/main/README.hi.md"><img src="https://raw.githubusercontent.com/buenosairesfront/chordexstg/main/docs/2_tutti.png" width="200" alt="ChordexSTG"></a> | **[ChordexSTG](https://github.com/buenosairesfront/chordexstg/blob/main/README.hi.md)**<br>गज़ से बजे तार की असली गति वाले ऑर्केस्ट्रा स्ट्रिंग्स<br>`;install https://github.com/buenosairesfront/chordexstg` |
+| <a href="https://github.com/buenosairesfront/chordexwt/blob/main/README.hi.md"><img src="https://raw.githubusercontent.com/buenosairesfront/chordexwt/main/docs/2_vocal.png" width="200" alt="Chordex WT"></a> | **[Chordex WT](https://github.com/buenosairesfront/chordexwt/blob/main/README.hi.md)**<br>वेवटेबल: 8 वेव वाले 8 बैंक, 3D टेबल के रूप में<br>`;install https://github.com/buenosairesfront/chordexwt` |
+
+**U-MA से और:** सभी वाद्य और टूल एक जगह → [U-MA शोकेस](https://github.com/buenosairesfront/U-ma/blob/main/README.hi.md)
+<!-- /u-ma:family -->
 
 ## ज़रूरतें
 
