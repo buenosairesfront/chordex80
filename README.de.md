@@ -30,7 +30,6 @@ das Display einen Outrun-Sonnenuntergang zeichnet.
   (Harfe); das Gate reicht von ganz kurz bis echtem Legato (eine Stimme, die
   nie abreißt)
 - **Akkordmodus** an/aus (aus = Einzeltöne) und **Halten**
-- Knistern einer alten Schallplatte, wenn mehr als zwei Tasten gehalten werden
 - eingehende MIDI-Clock bestimmt nur das Arpeggio-Tempo und löst nie Töne aus;
   im Takt wiederholte Töne lösen den Akkord nicht erneut aus
 - alles wird beim Beenden gespeichert und beim Laden identisch wiederhergestellt

@@ -27,7 +27,6 @@ the screen draws an outrun sunset.
   (harp); the gate goes from very short to real legato (one voice that never
   cuts)
 - **chord mode** on/off (off = single notes) and **hold**
-- old-record crackle when more than two keys are held
 - incoming MIDI clock only sets the arpeggio tempo, it never triggers notes;
   repeated notes on tempo do not retrigger the chord
 - everything is saved on exit and comes back the same on load

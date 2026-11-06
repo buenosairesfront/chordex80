@@ -29,7 +29,6 @@ pendant que l'écran dessine un coucher de soleil outrun.
   (harpe) ; le gate va de très court au vrai legato (une voix qui ne coupe
   jamais)
 - **mode accord** on/off (off = notes seules) et **maintien**
-- craquement de vieux disque avec plus de deux touches enfoncées
 - l'horloge MIDI entrante ne règle que le tempo de l'arpège, elle ne
   déclenche jamais de notes ; une même note répétée en rythme ne redéclenche
   pas l'accord

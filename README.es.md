@@ -28,7 +28,6 @@ pantalla dibuja un atardecer outrun.
 - **arpegiador**: up, down, up-down, up x2, down x2, random y *arpa*; el gate
   va de cortito a legato real (una voz que no se corta)
 - **modo acorde** on/off (off = una sola nota) y **retener**
-- crackle de disco viejo con más de dos teclas apretadas
 - el clock MIDI entrante solo marca el tempo del arpegio, nunca dispara notas;
   si el equipo repite la misma nota a tempo, no se vuelve a disparar el acorde
 - todo se guarda al salir y vuelve igual al cargar
