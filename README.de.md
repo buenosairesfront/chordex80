@@ -85,8 +85,18 @@ Danach **norns neu starten** (SYSTEM > RESTART), damit die neue Engine
 
 **Fader:** Attack, Decay, Verzerrung, Shimmer, Wobble, Fatness.
 
-**Menü PARAMETERS:** MIDI-Kanal (0 = alle, Standard), MIDI-Clock-Teiler,
+**Menü PARAMETERS:** MIDI-Kanal (Standard 1; 0 = alle), MIDI-Clock-Teiler,
 D-50-Attack, Hall, Lautstärke und alles oben Genannte.
+
+## arc und crow
+
+Beide sind optional: ohne angeschlossenes arc oder crow ändert sich nichts.
+
+**arc** (4 Ringe, als Drehregler dargestellt): 1 Filter · 2 Resonanz · 3 Arpeggio-Tempo · 4 Hall
+
+**crow**: IN1 = Tonhöhe (V/Okt., 0 V = C4), IN2 = Gate (spielt und lässt los) · OUT1 = Grundton des Akkords (V/Okt.) · OUT2 = Hüllkurve (0–8 V, mit Attack und Release des Klangs) · OUT3 = tempo-synchroner LFO (1 Takt) · OUT4 = ein Puls bei jedem Akkord oder Arpeggio-Schritt. Abschaltbar unter PARAMETERS > ARC / CROW.
+
+**Tempo:** beim ersten Start ist das interne Tempo 50 BPM. Eingehende MIDI-Clock (an jedem MIDI-Port) bestimmt das Tempo, sobald sie anliegt.
 
 ## Galerie
 
