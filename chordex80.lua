@@ -118,6 +118,7 @@ local P = {
   {id = "fatness", name = "fatness",    min = 0,     max = 1,  step = 0.02, def = 0.5},
 }
 local focus_index = 1
+local fader_flash = 0   -- nombre del parámetro (E2 / E3)
 
 local arp_on = false
 local arp_clock_id = nil
@@ -606,6 +607,8 @@ function enc(n, d)
       filter_pulse = PULSE
     else
       focus_index = ((focus_index - 1 + dir) % 6) + 1
+      fader_flash = PULSE * 1.5
+      model_flash = 0
       param_pulse[focus_index] = PULSE
     end
   elseif n == 3 then
@@ -618,6 +621,8 @@ function enc(n, d)
     else
       local p = P[focus_index]
       params:set(p.id, util.clamp(pv(p.id) + d * p.step, p.min, p.max))
+      fader_flash = PULSE * 1.5
+      model_flash = 0
       param_pulse[focus_index] = PULSE
     end
   end
@@ -969,6 +974,32 @@ end
 
 -- al cambiar de modelo aparece su dibujo arriba al centro y se desvanece
 local ICON_LV = {["#"] = 15, ["+"] = 9, ["."] = 4}
+
+-- cartel con el nombre del parámetro que se mueve (E2 elige, E3 ajusta):
+-- fondo negro debajo para que la animación no se vea a través
+local function param_label(p)
+  local nm = p.name or params:lookup_param(p.id).name or p.id
+  nm = nm:upper()
+  for a, b in pairs({["á"] = "A", ["é"] = "E", ["í"] = "I", ["ó"] = "O", ["ú"] = "U", ["ñ"] = "N"}) do
+    nm = nm:gsub(a, b)
+  end
+  return nm
+end
+
+local function draw_param_flash()
+  local txt = param_label(P[focus_index])
+  local cx, cy = 64, 32
+  screen.font_face(1)
+  screen.font_size(8)
+  local w = screen.text_extents(txt)
+  screen.level(0)
+  screen.rect(math.floor(cx - w / 2) - 3, cy - 6, w + 6, 11)
+  screen.fill()
+  screen.level(15)   -- sin fundido: los grises bajos ensucian el OLED
+  screen.move(math.floor(cx - w / 2), cy + 2)
+  screen.text(txt)
+end
+
 local function draw_model_name()
   if model_flash <= 0 then return end
   local a = math.min(1, model_flash / PULSE)
@@ -1015,6 +1046,7 @@ local function tick(dt)
   filter_pulse = math.max(0, filter_pulse - 1)
   model_flash = math.max(0, model_flash - 1)
   hold_flash = math.max(0, hold_flash - 1)
+  fader_flash = math.max(0, fader_flash - 1)
 
   local sounding = current_note ~= nil
   if sounding then
@@ -1072,5 +1104,6 @@ function redraw()
   G.flush()
   draw_chord_text(now)
   draw_model_name()
+  if fader_flash > 0 and model_flash <= 0 then draw_param_flash() end
   screen.update()
 end
