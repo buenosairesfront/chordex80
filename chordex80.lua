@@ -103,7 +103,7 @@ local MODEL_ICON = {
     "  #############################",
   },
 }
-local arp_pattern_names = {"up", "down", "up-down", "up x2", "down x2", "random", "arpa"}
+local arp_pattern_names = {"up", "down", "up-down", "up x2", "down x2", "random", "harp"}
 -- velocidad del arpegio: multiplica el paso original de Chordex2 (x1 = igual)
 local arp_rate_mult = {4, 2, 1, 0.5}
 local arp_rate_names = {"x1/4", "x1/2", "x1", "x2"}
@@ -112,7 +112,7 @@ local arp_rate_names = {"x1/4", "x1/2", "x1", "x2"}
 local P = {
   {id = "atk",     name = "attack",     min = 0.001, max = 2,  step = 0.01, def = 0.01},
   {id = "rel",     name = "decay",      min = 0.02,  max = 4,  step = 0.03, def = 0.9},
-  {id = "drive",   name = "distorsion", min = 0,     max = 1,  step = 0.02, def = 0.2},
+  {id = "drive",   name = "distortion", min = 0,     max = 1,  step = 0.02, def = 0.2},
   {id = "shimmer", name = "shimmer",    min = 0,     max = 1,  step = 0.02, def = 0},
   {id = "wobble",  name = "wobble",     min = 0,     max = 1,  step = 0.02, def = 0.25},
   {id = "fatness", name = "fatness",    min = 0,     max = 1,  step = 0.02, def = 0.5},
@@ -479,10 +479,10 @@ local STATE_FILE
 
 local function add_params()
   params:add_separator("chordex_80", "CHORDEX 80")
-  params:add_number("midi_channel", "canal MIDI (0=todos)", 0, 16, 1)
-  params:add_option("midi_clock_div", "divisor reloj MIDI", {"1x", "2x", "4x", "8x"}, 3)
-  params:add_option("model", "modelo", model_names, 1)
-  params:add_option("d50_atk", "ataque D-50", {"aire", "pluck", "ninguno"}, 1)
+  params:add_number("midi_channel", "MIDI channel (0=all)", 0, 16, 1)
+  params:add_option("midi_clock_div", "MIDI clock divider", {"1x", "2x", "4x", "8x"}, 3)
+  params:add_option("model", "model", model_names, 1)
+  params:add_option("d50_atk", "D-50 attack", {"air", "pluck", "none"}, 1)
   params:set_action("d50_atk", function(v) engine.d50atk(v - 1) end)
   -- al cambiar de modelo, lo que está sonando (también retenido o en
   -- arpegio) pasa al sinte nuevo
@@ -500,21 +500,21 @@ local function add_params()
       end
     end
   end)
-  params:add_option("chord", "acorde", chord_types, 1)
+  params:add_option("chord", "chord", chord_types, 1)
   params:set_action("chord", function()
     if current_note and not arp_on then sound_chord(current_note) end
   end)
-  params:add_option("chord_on", "modo acorde", {"no", "sí"}, 2)
+  params:add_option("chord_on", "chord mode", {"no", "yes"}, 2)
   params:set_action("chord_on", function()
     if current_note and not arp_on then sound_chord(current_note) end
   end)
-  params:add_option("arp_pattern", "patrón arp", arp_pattern_names, 1)
-  params:add_option("arp_rate", "velocidad arp", arp_rate_names, 3)
-  params:add_control("arp_gate", "gate arp (1=legato)", controlspec.new(0, 1, "lin", 0, 0.75, ""))
+  params:add_option("arp_pattern", "arp pattern", arp_pattern_names, 1)
+  params:add_option("arp_rate", "arp rate", arp_rate_names, 3)
+  params:add_control("arp_gate", "arp gate (1=legato)", controlspec.new(0, 1, "lin", 0, 0.75, ""))
 
-  params:add_control("cutoff", "filtro", controlspec.new(150, 9000, "exp", 0, 2400, "Hz"))
+  params:add_control("cutoff", "filter", controlspec.new(150, 9000, "exp", 0, 2400, "Hz"))
   params:set_action("cutoff", function(v) engine.cutoff(v) end)
-  params:add_control("res", "resonancia", controlspec.new(0, 3.6, "lin", 0, 1.0, ""))
+  params:add_control("res", "resonance", controlspec.new(0, 3.6, "lin", 0, 1.0, ""))
   params:set_action("res", function(v) engine.res(v) end)
 
   for _, p in ipairs(P) do
@@ -529,7 +529,7 @@ local function add_params()
 
   params:add_control("space", "hall", controlspec.new(0, 0.6, "lin", 0, 0.22, ""))
   params:set_action("space", function(v) engine.space(v) end)
-  params:add_control("gain", "volumen", controlspec.new(0, 1.5, "lin", 0, 1.0, ""))
+  params:add_control("gain", "volume", controlspec.new(0, 1.5, "lin", 0, 1.0, ""))
   params:set_action("gain", function(v) engine.gain(v) end)
 end
 
